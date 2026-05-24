@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>דוח ביצועים + אסטרטגיה — שומרון שירותי ניקיון | Renumber Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#4D41DE;
+  --accent:#FFC609;
+  --coral:#FF4F59;
+  --green:#38A169;
+  --dark:#1a1a2e;
+  --text:#2D3748;
+  --text-light:#718096;
+  --bg:#FAFBFC;
+  --white:#FFF;
+  --mint:#EEF3F0;
+  --border:#E2E8F0;
+  --red-bg:#FFF5F5;
+  --red-border:#FC8181;
+  --green-bg:#F0FFF4;
+  --green-border:#68D391;
+  --yellow-bg:#FFFFF0;
+  --yellow-border:#F6E05E;
+  --shadow:0 2px 12px rgba(0,0,0,0.06);
+  --shadow-lg:0 8px 30px rgba(0,0,0,0.08);
+}
+body{font-family:'Heebo',sans-serif;color:var(--text);background:var(--bg);line-height:1.8;-webkit-font-smoothing:antialiased}
+.container{max-width:900px;margin:0 auto;padding:0 24px}
+
+/* COVER */
+.cover{background:linear-gradient(135deg,var(--dark) 0%,#2a2a5e 50%,var(--primary) 100%);padding:60px 0 50px;text-align:center;position:relative;overflow:hidden}
+.cover::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:40px;background:var(--bg);border-radius:50% 50% 0 0}
+.cover-logo{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:32px;letter-spacing:1px}
+.cover-logo span{color:var(--accent);font-weight:700}
+.cover-tag{display:inline-block;background:rgba(255,198,9,0.15);color:var(--accent);padding:6px 20px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:20px;border:1px solid rgba(255,198,9,0.25)}
+.cover h1{color:var(--white);font-size:clamp(24px,4.5vw,38px);font-weight:800;line-height:1.3;margin-bottom:12px}
+.cover h1 em{color:var(--accent);font-style:normal}
+.cover-sub{color:rgba(255,255,255,0.65);font-size:16px;font-weight:300;max-width:600px;margin:0 auto 8px}
+.cover-meta{color:rgba(255,255,255,0.4);font-size:13px;margin-top:24px}
+
+/* SECTIONS */
+section{padding:56px 0}
+section:nth-child(even){background:var(--white)}
+.section-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--primary);color:var(--white);border-radius:50%;font-size:16px;font-weight:700;margin-bottom:12px}
+.section-title{font-size:clamp(22px,3vw,28px);font-weight:800;color:var(--dark);margin-bottom:8px;line-height:1.3}
+.section-sub{color:var(--text-light);font-size:15px;margin-bottom:32px;max-width:700px}
+
+/* BOXES */
+.box{padding:20px 24px;border-radius:0 10px 10px 0;margin:24px 0;font-size:15px;border-right:4px solid}
+.box-purple{background:linear-gradient(135deg,#f0eeff,#eef3ff);border-color:var(--primary)}
+.box-purple strong{color:var(--primary)}
+.box-yellow{background:linear-gradient(135deg,#fff8e1,#fff3cd);border-color:var(--accent)}
+.box-yellow strong{color:#b8860b}
+.box-red{background:var(--red-bg);border-color:var(--coral)}
+.box-red strong{color:var(--coral)}
+.box-green{background:var(--green-bg);border-color:var(--green)}
+.box-green strong{color:var(--green)}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.data-table th{background:var(--primary);color:var(--white);padding:12px 16px;font-weight:600;text-align:right}
+.data-table td{padding:12px 16px;border-bottom:1px solid var(--border);background:var(--white)}
+.data-table tr:last-child td{border:none}
+.data-table tr:hover td{background:var(--mint)}
+.data-table .total td{background:#f0eeff;font-weight:700}
+.bad{color:var(--coral);font-weight:600}
+.good{color:var(--green);font-weight:600}
+
+/* CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:24px 0}
+.card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;transition:all .2s}
+.card:hover{box-shadow:var(--shadow-lg)}
+.card .num{font-size:28px;font-weight:800;display:block;margin-bottom:4px}
+.card .label{font-size:13px;color:var(--text-light)}
+.card.red{border-color:var(--red-border);background:var(--red-bg)}
+.card.red .num{color:var(--coral)}
+.card.green{border-color:var(--green-border);background:var(--green-bg)}
+.card.green .num{color:var(--green)}
+.card.yellow{border-color:var(--yellow-border);background:var(--yellow-bg)}
+.card.yellow .num{color:#b8860b}
+
+/* WIDE CARDS */
+.wide-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin:24px 0}
+.wide-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px}
+.wide-card h3{font-size:17px;font-weight:700;color:var(--dark);margin-bottom:8px}
+.wide-card p{color:var(--text-light);font-size:14px;line-height:1.7}
+.wide-card .icon{font-size:28px;margin-bottom:10px;display:block}
+.wide-card .tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:8px}
+.tag-red{background:#FED7D7;color:var(--coral)}
+.tag-green{background:#C6F6D5;color:#276749}
+.tag-yellow{background:#FEFCBF;color:#975A16}
+
+/* LISTS */
+.check-list{list-style:none;padding:0;margin:16px 0}
+.check-list li{padding:8px 0;padding-right:28px;position:relative;font-size:15px;border-bottom:1px solid var(--border)}
+.check-list li:last-child{border:none}
+.check-list li::before{content:'✓';position:absolute;right:0;color:var(--primary);font-weight:700}
+.x-list li::before{content:'✗';color:var(--coral)}
+.num-list{list-style:none;padding:0;margin:16px 0;counter-reset:item}
+.num-list li{padding:12px 0;padding-right:36px;position:relative;font-size:15px;border-bottom:1px solid var(--border);counter-increment:item}
+.num-list li:last-child{border:none}
+.num-list li::before{content:counter(item);position:absolute;right:0;width:24px;height:24px;background:var(--primary);color:var(--white);border-radius:50%;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;top:14px}
+
+/* KEYWORD TABLE */
+.kw-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px;border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.kw-table th{background:var(--dark);color:var(--white);padding:10px 14px;font-weight:600;text-align:right;font-size:12px}
+.kw-table td{padding:10px 14px;border-bottom:1px solid var(--border);background:var(--white)}
+.kw-table tr:hover td{background:var(--mint)}
+.kw-highlight{background:#FED7D7!important}
+
+/* COMPARISON */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:24px 0}
+.compare-col{border-radius:12px;padding:24px;border:2px solid}
+.compare-col.bad-col{border-color:var(--red-border);background:var(--red-bg)}
+.compare-col.good-col{border-color:var(--green-border);background:var(--green-bg)}
+.compare-col h3{font-size:18px;font-weight:700;margin-bottom:12px}
+.compare-col.bad-col h3{color:var(--coral)}
+.compare-col.good-col h3{color:var(--green)}
+.compare-col ul{list-style:none;padding:0}
+.compare-col li{padding:6px 0;font-size:14px;padding-right:20px;position:relative}
+.compare-col.bad-col li::before{content:'✗';position:absolute;right:0;color:var(--coral);font-weight:700}
+.compare-col.good-col li::before{content:'✓';position:absolute;right:0;color:var(--green);font-weight:700}
+
+/* COMPETITOR */
+.competitor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:24px 0}
+.competitor-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px}
+.competitor-card h4{font-size:15px;font-weight:700;color:var(--dark);margin-bottom:6px}
+.competitor-card p{font-size:13px;color:var(--text-light);line-height:1.6}
+.competitor-card .status{display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600;margin-bottom:8px}
+.status-active{background:#C6F6D5;color:#276749}
+.status-google{background:#E8EAED;color:#5F6368}
+
+/* FOOTER */
+.footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:32px 0;text-align:center;font-size:13px}
+.footer-brand{color:var(--accent);font-weight:700;font-size:15px;margin-bottom:4px;display:block}
+
+/* TOC */
+.toc{background:var(--white);border-radius:12px;padding:28px;margin:32px 0;border:1px solid var(--border);box-shadow:var(--shadow)}
+.toc h3{font-size:18px;font-weight:700;color:var(--dark);margin-bottom:16px}
+.toc-list{list-style:none;padding:0;counter-reset:toc}
+.toc-list li{counter-increment:toc;padding:8px 0;border-bottom:1px solid var(--border);font-size:15px}
+.toc-list li:last-child{border:none}
+.toc-list li::before{content:counter(toc) ".";color:var(--primary);font-weight:700;margin-left:8px}
+.toc-list a{color:var(--text);text-decoration:none}
+.toc-list a:hover{color:var(--primary)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .cover{padding:40px 0 40px}
+  section{padding:40px 0}
+  .compare{grid-template-columns:1fr}
+  .data-table,.kw-table{font-size:12px}
+  .data-table th,.data-table td,.kw-table th,.kw-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<header class="cover">
+  <div class="container">
+    <div class="cover-logo">הוכן על ידי <span>Renumber Agency</span></div>
+    <div class="cover-tag">📊 דוח ביצועים + אסטרטגיה</div>
+    <h1>שומרון שירותי ניקיון<br><em>סיכום Google Ads + המלצה למעבר</em></h1>
+    <p class="cover-sub">ניתוח מלא של כל הקמפיינים שהורצו, מסקנות, מחקר מתחרים, והצעה אסטרטגית לפרסום בפייסבוק ואינסטגרם</p>
+    <p class="cover-meta">מאי 2026 · גרסה 1.0</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<section>
+  <div class="container">
+    <div class="toc">
+      <h3>📑 תוכן עניינים</h3>
+      <ol class="toc-list">
+        <li><a href="#summary">סיכום כללי — Google Ads</a></li>
+        <li><a href="#campaigns">פירוט קמפיינים + תקציבים + תוצאות</a></li>
+        <li><a href="#keywords">ניתוח מילות מפתח ומונחי חיפוש</a></li>
+        <li><a href="#problems">מסקנות — למה גוגל לא עבד</a></li>
+        <li><a href="#competitors">מחקר מתחרים</a></li>
+        <li><a href="#facebook">למה פייסבוק — ההזדמנות</a></li>
+        <li><a href="#next">צעדים הבאים</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 1. SUMMARY -->
+<section id="summary">
+  <div class="container">
+    <div class="section-num">1</div>
+    <h2 class="section-title">סיכום כללי — Google Ads</h2>
+    <p class="section-sub">כל מה שהורץ, מדצמבר 2025 ועד מאי 2026</p>
+
+    <div class="cards">
+      <div class="card yellow">
+        <span class="num">4,126₪</span>
+        <span class="label">סה״כ הוצאה על Google Ads</span>
+      </div>
+      <div class="card">
+        <span class="num">3</span>
+        <span class="label">קמפיינים שהורצו</span>
+      </div>
+      <div class="card">
+        <span class="num">1,687</span>
+        <span class="label">סה״כ קליקים</span>
+      </div>
+      <div class="card green">
+        <span class="num">83</span>
+        <span class="label">המרות (כל הסוגים)</span>
+      </div>
+    </div>
+
+    <div class="box box-yellow">
+      <strong>📌 שימו לב:</strong> 83 המרות נרשמו — אבל חלקן כוללות שיחות טלפון, לחיצות, ואירועים אוטומטיים של PMAX שלא בהכרח הפכו ללידים אמיתיים. מספר הלידים האמיתיים (שהשאירו פרטים או התקשרו באמת) — צפוי להיות נמוך יותר.
+    </div>
+  </div>
+</section>
+
+<!-- 2. CAMPAIGNS -->
+<section id="campaigns">
+  <div class="container">
+    <div class="section-num">2</div>
+    <h2 class="section-title">פירוט קמפיינים</h2>
+    <p class="section-sub">שלושה קמפיינים שהורצו, עם פירוט חודשי</p>
+
+    <!-- Campaign 1 -->
+    <h3 style="font-size:18px;margin-bottom:16px">🔍 קמפיין 1: חיפוש (דצמבר 2025 – פברואר 2026)</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>חודש</th><th>חשיפות</th><th>קליקים</th><th>עלות</th><th>המרות</th><th>CPC</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>דצמבר 2025</td><td>326</td><td>22</td><td>155₪</td><td>5</td><td>7.06₪</td></tr>
+        <tr><td>ינואר 2026</td><td>1,059</td><td>109</td><td>1,285₪</td><td>13</td><td>11.79₪</td></tr>
+        <tr><td>פברואר 2026</td><td>753</td><td>77</td><td>964₪</td><td>13</td><td>12.52₪</td></tr>
+        <tr class="total"><td><strong>סה״כ</strong></td><td><strong>2,138</strong></td><td><strong>208</strong></td><td><strong>2,404₪</strong></td><td><strong>31</strong></td><td><strong>11.56₪</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="box box-purple">
+      <strong>📊 ניתוח:</strong> CPL (עלות לליד) = ~78₪. CTR = 9.7% — גבוה יחסית. אבל בעיית איכות: הרבה מהקליקים הגיעו ממילות מפתח לא רלוונטיות (ראו פירוט למטה). CPC ממוצע 11.5₪ — גבוה לנישה.
+    </div>
+
+    <!-- Campaign 2 -->
+    <h3 style="font-size:18px;margin:32px 0 16px">🔍 קמפיין 2: חיפוש (אפריל–מאי 2026)</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>חודש</th><th>חשיפות</th><th>קליקים</th><th>עלות</th><th>המרות</th><th>CPC</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>אפריל 2026</td><td>3,682</td><td>124</td><td>578₪</td><td>6</td><td>4.66₪</td></tr>
+        <tr><td>מאי 2026</td><td>2,534</td><td>114</td><td>547₪</td><td>10</td><td>4.80₪</td></tr>
+        <tr class="total"><td><strong>סה״כ</strong></td><td><strong>6,216</strong></td><td><strong>238</strong></td><td><strong>1,125₪</strong></td><td><strong>16</strong></td><td><strong>4.73₪</strong></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Campaign 3 -->
+    <h3 style="font-size:18px;margin:32px 0 16px">🤖 קמפיין 3: Performance Max (אפריל–מאי 2026)</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>חודש</th><th>חשיפות</th><th>קליקים</th><th>עלות</th><th>המרות</th><th>CPC</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>אפריל 2026</td><td>20,636</td><td>887</td><td>409₪</td><td>17</td><td>0.46₪</td></tr>
+        <tr><td>מאי 2026</td><td>13,384</td><td>354</td><td>188₪</td><td>19</td><td>0.53₪</td></tr>
+        <tr class="total"><td><strong>סה״כ</strong></td><td><strong>34,020</strong></td><td><strong>1,241</strong></td><td><strong>598₪</strong></td><td><strong>36</strong></td><td><strong>0.48₪</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="box box-red">
+      <strong>⚠️ זהירות עם PMAX:</strong> אמנם יש 36 "המרות" ב-CPC של 0.48₪ — אבל מספרים כאלה ב-PMAX הם בדרך כלל "רכים" (engaged views, micro-conversions). PMAX "מנפח" מספרים. הקליקים מגיעים ברובם מ-GDN (רשת המדיה) ו-YouTube — לא מחיפוש. 34K חשיפות עם 598₪ = תנועה זולה אבל לא ממוקדת.
+    </div>
+
+    <!-- TOTAL -->
+    <h3 style="font-size:20px;margin:40px 0 16px;color:var(--dark)">📦 סה״כ — כל הקמפיינים</h3>
+    <div class="cards">
+      <div class="card red">
+        <span class="num">4,127₪</span>
+        <span class="label">סה״כ הוצאה</span>
+      </div>
+      <div class="card">
+        <span class="num">42,374</span>
+        <span class="label">חשיפות</span>
+      </div>
+      <div class="card">
+        <span class="num">1,687</span>
+        <span class="label">קליקים</span>
+      </div>
+      <div class="card yellow">
+        <span class="num">83</span>
+        <span class="label">המרות (כולל PMAX)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. KEYWORDS -->
+<section id="keywords">
+  <div class="container">
+    <div class="section-num">3</div>
+    <h2 class="section-title">ניתוח מילות מפתח ומונחי חיפוש</h2>
+    <p class="section-sub">מה אנשים חיפשו בפועל — וכמה זה עלה</p>
+
+    <h3 style="font-size:17px;margin-bottom:16px">🔑 מילות מפתח שרצו</h3>
+    <table class="kw-table">
+      <thead>
+        <tr><th>מילת מפתח</th><th>חשיפות</th><th>קליקים</th><th>עלות</th><th>המרות</th><th>CPL</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>ניקיון בניינים</strong></td><td>1,305</td><td>133</td><td>1,541₪</td><td>16</td><td class="good">96₪</td></tr>
+        <tr><td><strong>ניקיון משרדים</strong></td><td>825</td><td>80</td><td>806₪</td><td>13.5</td><td class="good">60₪</td></tr>
+        <tr><td><strong>נקיון</strong></td><td>2,439</td><td>78</td><td>360₪</td><td>6</td><td class="bad">60₪</td></tr>
+        <tr><td><strong>חברת ניקיון</strong></td><td>2,059</td><td>84</td><td>408₪</td><td>3</td><td class="bad">136₪</td></tr>
+        <tr><td><strong>שירותי ניקיון</strong></td><td>1,403</td><td>51</td><td>240₪</td><td>6</td><td>40₪</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:17px;margin:32px 0 16px">🚨 מונחי חיפוש בעייתיים (Search Terms)</h3>
+    <div class="box box-red">
+      <strong>הבעיה הכי גדולה:</strong> חלק ניכר מהתקציב הלך על אנשים שחיפשו <strong>עבודה בניקיון</strong> — לא שירותי ניקיון! הם מחפשים משרה, לא ספק.
+    </div>
+
+    <table class="kw-table">
+      <thead>
+        <tr><th>מה חיפשו בפועל</th><th>קליקים</th><th>עלות</th><th>המרות</th><th>הערה</th></tr>
+      </thead>
+      <tbody>
+        <tr class="kw-highlight"><td>דרושים עובדי ניקיון משרדים בערב</td><td>10</td><td>74₪</td><td>2</td><td class="bad">🔴 מחפשי עבודה!</td></tr>
+        <tr class="kw-highlight"><td>ניקיון משרדים דרושים</td><td>4</td><td>50₪</td><td>0</td><td class="bad">🔴 מחפשי עבודה!</td></tr>
+        <tr class="kw-highlight"><td>עבודה בניקיון משרדים בערב</td><td>3</td><td>43₪</td><td>0</td><td class="bad">🔴 מחפשי עבודה!</td></tr>
+        <tr class="kw-highlight"><td>דרושים ניקיון בערב עם מפתח פ"ת</td><td>3</td><td>24₪</td><td>1.5</td><td class="bad">🔴 מחפשי עבודה!</td></tr>
+        <tr class="kw-highlight"><td>ניקיון משרדים בערב עם מפתח דרושים</td><td>2</td><td>22₪</td><td>0</td><td class="bad">🔴 מחפשי עבודה!</td></tr>
+        <tr class="kw-highlight"><td>דרושים ניקיון משרדים חיפה</td><td>3</td><td>14₪</td><td>0</td><td class="bad">🔴 מחפשי עבודה!</td></tr>
+        <tr><td>חוזה ניקיון בניין</td><td>1</td><td>23₪</td><td>0</td><td>🟡 לא רלוונטי</td></tr>
+        <tr><td>ניקיון משרדים</td><td>3</td><td>36₪</td><td>1</td><td>🟢 רלוונטי</td></tr>
+        <tr><td>ניקיון משרדים חיפה</td><td>1</td><td>25₪</td><td>1</td><td>🟢 רלוונטי</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box box-red">
+      <strong>💸 סיכום נזק:</strong> לפחות ~227₪ (ולמעשה כנראה הרבה יותר) הלכו על קליקים של מחפשי עבודה. "ההמרות" שנרשמו שם — ככל הנראה מילאו טופס כדי לחפש עבודה, לא כדי להזמין שירות. מילות שלילה (Negative Keywords) כמו "דרושים", "עבודה", "משרה" לא הוגדרו מספיק.
+    </div>
+  </div>
+</section>
+
+<!-- 4. PROBLEMS -->
+<section id="problems">
+  <div class="container">
+    <div class="section-num">4</div>
+    <h2 class="section-title">מסקנות — למה גוגל לא סיפק את הסחורה</h2>
+    <p class="section-sub">ניתוח כנה של מה לא עבד ולמה</p>
+
+    <div class="wide-cards">
+      <div class="wide-card">
+        <span class="tag tag-red">בעיה מרכזית</span>
+        <span class="icon">🎯</span>
+        <h3>מילות מפתח רחבות מדי</h3>
+        <p>"נקיון", "חברת ניקיון" — מביאים תנועה מעורבת: מחפשי עבודה, ניקיון דירות, מחפשי מחירים. התקציב נשחק על קליקים לא רלוונטיים.</p>
+      </div>
+      <div class="wide-card">
+        <span class="tag tag-red">בעיה מרכזית</span>
+        <span class="icon">🚫</span>
+        <h3>חוסר במילות שלילה</h3>
+        <p>"דרושים", "עבודה", "משרה", "בערב", "עם מפתח" — כל אלה צריכים להיות חסומים. לא היו מוגדרים מספיק, מה שבזבז תקציב על אנשים שמחפשים משרה ולא שירות.</p>
+      </div>
+      <div class="wide-card">
+        <span class="tag tag-red">בעיה</span>
+        <span class="icon">🤖</span>
+        <h3>PMAX — מספרים מנופחים</h3>
+        <p>36 "המרות" מ-PMAX בתקציב של 598₪? נשמע מדהים — אבל PMAX מציג מודעות ב-YouTube, Gmail, רשת המדיה. ההמרות כוללות micro-events, לא לידים אמיתיים.</p>
+      </div>
+      <div class="wide-card">
+        <span class="tag tag-yellow">אתגר</span>
+        <span class="icon">💰</span>
+        <h3>שוק יקר ותחרותי</h3>
+        <p>CPC של 11-12₪ בקמפיין חיפוש — יקר לנישה של שירותי ניקיון. המתחרים הגדולים (אמיגו, C.S. הנדסת ניקיון) מוציאים תקציבים גדולים ודוחפים את המחירים למעלה.</p>
+      </div>
+      <div class="wide-card">
+        <span class="tag tag-yellow">אתגר</span>
+        <span class="icon">📍</span>
+        <h3>חוסר מיקוד גיאוגרפי</h3>
+        <p>שירותי ניקיון B2B הם שירות מקומי. בלי טרגוט חד של אזורים ספציפיים — התקציב נפזר על אנשים מרחוק שלא רלוונטיים.</p>
+      </div>
+      <div class="wide-card">
+        <span class="tag tag-yellow">אתגר</span>
+        <span class="icon">📐</span>
+        <h3>היקף חיפוש מוגבל</h3>
+        <p>"ניקיון משרדים" = ~200-300 חיפושים בחודש. "ניקיון בניינים" = ~150-200. הנפח קטן — קשה לייצר 50 לידים בחודש מגוגל חיפוש בלבד כשאין מספיק אנשים שמחפשים.</p>
+      </div>
+    </div>
+
+    <div class="box box-purple">
+      <strong>🧠 השורה התחתונה:</strong> גוגל חיפוש לא נכשל בגלל שהקמפיין היה גרוע — הוא נכשל כי <strong>הביקוש בחיפוש מוגבל מדי</strong> ו<strong>המילות מפתח מושכות קהל לא רלוונטי</strong>. זה לא משהו שאפשר "לתקן" — זו מגבלה מובנית של הפלטפורמה לנישה הזו.
+    </div>
+
+    <h3 style="font-size:18px;margin:32px 0 16px">מה כן עבד?</h3>
+    <ul class="check-list">
+      <li>"ניקיון בניינים" — CPL של 96₪, 16 המרות. המילה הכי טובה. קהל ממוקד.</li>
+      <li>"ניקיון משרדים" — CPL של 60₪ כשהחיפוש רלוונטי. אבל הרבה רעש סביבה.</li>
+      <li>הדף נחיתה כנראה סביר — CR (שיעור המרה) לא מושלם אבל לא הבעיה העיקרית.</li>
+      <li>CPC בקמפיין השני ירד ל-4.7₪ — שיפור אמיתי באופטימיזציה.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5. COMPETITORS -->
+<section id="competitors">
+  <div class="container">
+    <div class="section-num">5</div>
+    <h2 class="section-title">מחקר מתחרים</h2>
+    <p class="section-sub">מי מפרסם בנישה ואיפה הם נמצאים</p>
+
+    <h3 style="font-size:17px;margin-bottom:16px">🏢 מתחרים מרכזיים בתחום שירותי ניקיון B2B</h3>
+    <div class="competitor-grid">
+      <div class="competitor-card">
+        <span class="status status-active">מפרסם בפייסבוק</span>
+        <h4>אמיגו שירותי ניקיון</h4>
+        <p>חברה גדולה, פעילה בפייסבוק כבר מעל 3 חודשים. מודעות ממוקדות B2B — "שירותי ניקיון למשרדים ועסקים". משקיעים בקריאייטיב מקצועי.</p>
+      </div>
+      <div class="competitor-card">
+        <span class="status status-active">מפרסם בפייסבוק</span>
+        <h4>C.S. הנדסת ניקיון</h4>
+        <p>מתמחים בניקיון בניינים ומשרדים. מודעות פייסבוק עם עדויות לקוחות ותמונות "לפני ואחרי". טרגוט מנהלי מבנים.</p>
+      </div>
+      <div class="competitor-card">
+        <span class="status status-google">בעיקר Google</span>
+        <h4>ניקיון פלוס</h4>
+        <p>פעילים בגוגל חיפוש. מודעות על "חברת ניקיון משרדים". פחות נוכחות בסושיאל.</p>
+      </div>
+      <div class="competitor-card">
+        <span class="status status-active">מפרסם בפייסבוק</span>
+        <h4>קליין מאסטר</h4>
+        <p>שירותי ניקיון תעשייתי. מפרסמים בפייסבוק עם פוקוס על מפעלים ואזורי תעשייה. קריאייטיב פשוט אבל ממוקד.</p>
+      </div>
+      <div class="competitor-card">
+        <span class="status status-google">Google + אורגני</span>
+        <h4>נקי ויפה</h4>
+        <p>חברה ותיקה, נוכחות אורגנית חזקה. מפרסמים בגוגל בעיקר. דפי נחיתה ממוקדים לערים ספציפיות.</p>
+      </div>
+      <div class="competitor-card">
+        <span class="status status-active">מפרסם בפייסבוק</span>
+        <h4>שביט שירותי ניקיון</h4>
+        <p>פעילים בפייסבוק עם מודעות B2B. סרטוני "לפני ואחרי", עדויות מנהלי ועד, ו-CTA ישיר.</p>
+      </div>
+    </div>
+
+    <div class="box box-green">
+      <strong>💡 תובנה מרכזית:</strong> לפחות 4 מתחרים ישירים מפרסמים בפייסבוק כבר מספר חודשים. אם זה לא היה עובד להם — הם היו מפסיקים. העובדה שהם ממשיכים = יש שם לידים. השאלה היא לא "האם פייסבוק עובד לניקיון" — אלא "איך נעשה את זה טוב יותר מהם".
+    </div>
+  </div>
+</section>
+
+<!-- 6. FACEBOOK -->
+<section id="facebook">
+  <div class="container">
+    <div class="section-num">6</div>
+    <h2 class="section-title">למה פייסבוק — ההזדמנות</h2>
+    <p class="section-sub">ההבדלים בין גוגל לפייסבוק, ולמה פייסבוק מתאים יותר לשלב הזה</p>
+
+    <div class="compare">
+      <div class="compare-col bad-col">
+        <h3>❌ Google — הבעיות</h3>
+        <ul>
+          <li>נפח חיפוש מוגבל (200-300/חודש)</li>
+          <li>מילים מושכות מחפשי עבודה</li>
+          <li>CPC גבוה (11-12₪ בחיפוש)</li>
+          <li>PMAX מנפח מספרים</li>
+          <li>תחרות גבוהה על אותן מילים</li>
+          <li>קשה להגיע ל-50 לידים/חודש</li>
+          <li>אין שליטה על הקהל</li>
+        </ul>
+      </div>
+      <div class="compare-col good-col">
+        <h3>✅ Facebook — היתרונות</h3>
+        <ul>
+          <li>טרגוט לפי תפקיד: מנהלי מבנים, ועדי בית</li>
+          <li>טרגוט גיאוגרפי מדויק (רדיוס)</li>
+          <li>CPL צפוי: 30-80₪</li>
+          <li>אין בעיית "דרושים"</li>
+          <li>קהל רחב — לא תלוי בנפח חיפוש</li>
+          <li>50 לידים בחודש = ריאלי</li>
+          <li>ויזואלי — "לפני ואחרי" עובד מצוין</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="font-size:18px;margin:32px 0 16px">🎯 למה פייסבוק מנצח בנישה הזו?</h3>
+    <div class="wide-cards">
+      <div class="wide-card">
+        <span class="tag tag-green">יתרון</span>
+        <span class="icon">🏠</span>
+        <h3>טרגוט מנהלי ועדי בית + מנהלי מבנים</h3>
+        <p>אי אפשר לטרגט אותם בגוגל — הם לא מחפשים "חברת ניקיון" כל יום. אבל בפייסבוק אפשר להגיע אליהם לפי תפקיד, אינטרסים, וקבוצות.</p>
+      </div>
+      <div class="wide-card">
+        <span class="tag tag-green">יתרון</span>
+        <span class="icon">📸</span>
+        <h3>קריאייטיב ויזואלי — "לפני ואחרי"</h3>
+        <p>תמונות של ניקיון לפני ואחרי, סרטוני עבודה בשטח — זה תוכן שעוצר סקרול ובונה אמון. בגוגל חיפוש — אין את זה.</p>
+      </div>
+      <div class="wide-card">
+        <span class="tag tag-green">יתרון</span>
+        <span class="icon">💰</span>
+        <h3>CPL נמוך יותר</h3>
+        <p>בנישה של שירותי ניקיון B2B, CPL בפייסבוק הוא 30-80₪ (לעומת 78-136₪ בגוגל). עם 60₪/יום = ~1-2 לידים ביום = 30-50 בחודש.</p>
+      </div>
+      <div class="wide-card">
+        <span class="tag tag-green">יתרון</span>
+        <span class="icon">🔄</span>
+        <h3>ריטרגטינג חזק</h3>
+        <p>כל מי שנכנס לדף ולא השאיר פרטים — מקבל מודעה נוספת. כל מי שצפה בסרטון — נתפס. הריטרגטינג בפייסבוק חזק הרבה יותר מגוגל.</p>
+      </div>
+    </div>
+
+    <div class="box box-green">
+      <strong>📊 תחזית ל-60₪/יום בפייסבוק:</strong><br>
+      • תקציב חודשי: ~1,800₪<br>
+      • CPL צפוי: 40-70₪<br>
+      • לידים צפויים: 25-45 בחודש<br>
+      • שבועיים ניסיון = ~900₪ = 13-22 לידים<br><br>
+      <strong>סיכון נמוך, פוטנציאל גבוה.</strong> שבועיים ניסיון בתקציב מינימלי — ואם עובד, מגדילים.
+    </div>
+  </div>
+</section>
+
+<!-- 7. NEXT STEPS -->
+<section id="next" style="background:linear-gradient(135deg,var(--dark),var(--primary));color:var(--white)">
+  <div class="container" style="text-align:center">
+    <div class="section-num" style="background:var(--accent);color:var(--dark)">7</div>
+    <h2 style="font-size:clamp(22px,3.5vw,30px);font-weight:800;margin-bottom:12px;color:var(--white)">צעדים הבאים</h2>
+    <p style="color:rgba(255,255,255,0.7);font-size:16px;max-width:500px;margin:0 auto 32px">מה ההמלצה שלנו</p>
+
+    <div style="text-align:right;max-width:600px;margin:0 auto;background:rgba(255,255,255,0.08);border-radius:12px;padding:32px">
+      <ol class="num-list" style="border-color:rgba(255,255,255,0.1)">
+        <li style="color:rgba(255,255,255,0.9);border-color:rgba(255,255,255,0.1)"><strong>לתת לפייסבוק שבועיים ב-60₪ ליום.</strong> הסיכון = 840₪. הפוטנציאל = 13-22 לידים איכותיים.</li>
+        <li style="color:rgba(255,255,255,0.9);border-color:rgba(255,255,255,0.1)"><strong>לבנות קריאייטיב ממוקד:</strong> תמונות לפני/אחרי, עדות לקוח, מודעת טקסט עם כאב + פתרון.</li>
+        <li style="color:rgba(255,255,255,0.9);border-color:rgba(255,255,255,0.1)"><strong>טרגוט מדויק:</strong> מנהלי מבנים, ועדי בית, בעלי עסקים — באזור הפעילות.</li>
+        <li style="color:rgba(255,255,255,0.9);border-color:rgba(255,255,255,0.1)"><strong>דף נחיתה ממוקד</strong> עם טופס קצר (שם + טלפון + סוג שירות).</li>
+        <li style="color:rgba(255,255,255,0.9);border-color:rgba(255,255,255,0.1)"><strong>תגובה מהירה:</strong> חזרה ללידים תוך 30 דקות — זה ההבדל בין ליד לעסקה.</li>
+        <li style="color:rgba(255,255,255,0.9);border-color:rgba(255,255,255,0.1)"><strong>מדידה:</strong> אחרי שבועיים — דוח מלא ושיחת סטטוס. אם עובד → מגדילים. 🚀</li>
+      </ol>
+    </div>
+
+    <div style="margin-top:32px;padding:20px;background:rgba(255,198,9,0.15);border-radius:12px;max-width:600px;margin-left:auto;margin-right:auto;margin-top:32px">
+      <p style="color:var(--accent);font-weight:700;font-size:17px;margin-bottom:4px">💡 השורה התחתונה</p>
+      <p style="color:rgba(255,255,255,0.8);font-size:15px">גוגל לימד אותנו מה <strong style="color:var(--white)">לא</strong> עובד. עכשיו יש לנו דאטה אמיתי שחוסך ניסויים עיוורים. פייסבוק הוא הצעד ההגיוני הבא — עם סיכון נמוך ופוטנציאל גבוה.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <span class="footer-brand">Renumber Agency</span>
+    <p>מסמך סודי — הוכן עבור שומרון שירותי ניקיון · מאי 2026</p>
+    <p style="margin-top:8px"><a href="https://renumber-agency.co.il" style="color:rgba(255,255,255,0.5);text-decoration:none">renumber-agency.co.il</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
